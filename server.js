@@ -15,5 +15,10 @@ app.use(express.json());
 app.use('/api/contact', contactRoutes);         // Full Contact Us page
 app.use('/api/home-contact', homeContactRoutes); // Homepage "Get in Touch"
 
+// Default route to confirm backend is working
+app.get("/", (req, res) => {
+  res.send("✅ Contact Backend is Live");
+});
+
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server is running on port ${PORT}`));
