@@ -1,0 +1,19 @@
+const express = require('express');
+const connectDB = require('./config/db');
+const contactRoutes = require('./routes/contact');
+const homeContactRoutes = require('./routes/homeContact');
+const app = express();
+require('dotenv').config();
+
+// Connect to DB
+connectDB();
+
+// Middleware
+app.use(express.json());
+
+// Routes
+app.use('/api/contact', contactRoutes);         // Full Contact Us page
+app.use('/api/home-contact', homeContactRoutes); // Homepage "Get in Touch"
+
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => console.log(`Server is running on port ${PORT}`));
