@@ -1,9 +1,13 @@
 const express = require('express');
+const cors = require('cors'); // ✅ Allow cross-origin requests
 const connectDB = require('./config/db');
 const contactRoutes = require('./routes/contact');
 const homeContactRoutes = require('./routes/homeContact');
 const app = express();
 require('dotenv').config();
+
+// ✅ Enable CORS for all origins (public access)
+app.use(cors());
 
 // Connect to DB
 connectDB();
